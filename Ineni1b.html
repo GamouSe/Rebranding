@@ -100,16 +100,13 @@ DEFAULT: '8px',
 
 <!-- Navbar -->
 <nav class="fixed w-full min-h-20 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 flex items-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-    <!div class="max-w-7xl mx-auto px-4 flex items-center justify-between w-full">
-    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
         
-        <!-- Logo (Always Left-Aligned) -->
+        <!-- Logo (Left-Aligned) -->
         <a href="#" class="text-2xl font-['Pacifico'] text-primary tracking-[0.2em]">INENI</a>
 
         <!-- Navigation Links (Centered) -->
-        <div class="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
-        <!div class="hidden md:flex items-center space-x-6 mx-auto">
+        <div class="hidden md:flex items-center space-x-6 mx-auto">
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">A Propos</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">Services</a>
             <a href="#" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
@@ -118,25 +115,23 @@ DEFAULT: '8px',
         </div>
 
         <!-- Language Menu (Right-Aligned) -->
-        <div class="relative">
-        <!div class="relative flex items-center">
+        <div class="relative flex items-center">
             <button id="languageBtn" class="flex items-center space-x-1 text-gray-700 hover:text-primary transition-colors">
                 <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
                 <i class="ri-arrow-down-s-line"></i>
             </button>
-        
 
-        <!-- Dropdown Menu -->
-        <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
-             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                 <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
-             </a>
-             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                 <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
-             </a>
+            <!-- Dropdown Menu -->
+            <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
+                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                     <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
+                 </a>
+                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                     <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
+                 </a>
+            </div>
         </div>
     </div>
-  </div>
 </nav>
 
 
