@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ineni - Digital Innovation & Technology Solutions</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+
+<style>
+
+:where([class^="ri-"])::before { content: "\f3c2"; }
+
+body { font-family: 'Inter', sans-serif; }
+
+.scroll-indicator { animation: bounce 2s infinite; }
+
+@keyframes bounce {
+
+0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+
+40% { transform: translateY(-10px); }
+
+60% { transform: translateY(-5px); }
+
+}
+
+</style>
+
+<script>
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+colors: {
+
+primary: '#0066FF',
+
+secondary: '#00C8FF'
+
+},
+
+borderRadius: {
+
+'none': '0px',
+
+'sm': '4px',
+
+DEFAULT: '8px',
+
+'md': '12px',
+
+'lg': '16px',
+
+'xl': '20px',
+
+'2xl': '24px',
+
+'3xl': '32px',
+
+'full': '9999px',
+
+'button': '8px'
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body class="bg-white">
+
+
+
+<!-- Navbar -->
+<nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        
+        <!-- Logo -->
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary tracking-[0.2em]">INENI</a>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center space-x-6 ml-auto">
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors">A Propos</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Emploi</a>
+            <a href="#" class="bg-primary text-white px-6 py-2 rounded-button hover:bg-primary/90 transition">Contact</a>
+        </div>
+
+        <!-- Language Menu Wrapper (Now at the Far Right) -->
+        <div class="relative ml-auto pr-4">
+            <!-- Language Button -->
+            <button id="languageBtn" class="flex items-center space-x-1 text-gray-700 hover:text-primary transition-colors" onclick="toggleLanguageMenu()">
+                <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
+                <i class="ri-arrow-down-s-line"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                    <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                    <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+<!-- Hero Section with Fullscreen Video -->
+<section class="relative w-full h-[calc(100vh-45px)] flex items-end justify-center overflow-hidden">
+    <!-- Background Video -->
+    <!-- Background Video -->
+    <div class="absolute inset-0 w-full h-full">
+        <video id="hero-video" autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="Heroscreen.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Gradient Overlay (Starts lower for clear video) -->
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-black/70 to-white"></div>
+
+    <!-- Hero Content -->
+    <div class="relative w-full max-w-7xl px-4 pb-20 text-white z-10">
+        <h1 class="text-3xl md:text-5xl font-bold text-center">
+            Ensemble, défions les limites de l'innovation
+        </h1>
+        <p class="text-lg md:text-xl font-light text-center mt-4">
+            A travers l'innovation digitale, toute transformation devient possible
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-end gap-4 mt-6">
+            <a href="#" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">Découvrez notre approche</a>
+            <a href="#" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">Rejoignez nos équipes</a>
+        </div>
+    </div>
+
+    <!-- Play/Pause Button -->
+    <button id="video-control" class="absolute bottom-60 left-6 bg-gray-900/80 text-white px-4 py-2 rounded-lg">
+        ⏸
+    </button>
+
+    <!-- White Bottom Section -->
+    <div class="absolute bottom-0 w-full h-16 bg-white"></div>
+</section>
+
+<!-- JavaScript for Play/Pause Button -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var video = document.getElementById("hero-video");
+        var button = document.getElementById("video-control");
+
+        button.addEventListener("click", function () {
+            if (video.paused) {
+                video.play();
+                video.loop = true; // Ensure looping resumes when played
+                button.textContent = "⏸"; // Change to pause icon
+            } else {
+                video.pause();
+                video.loop = false; // Stop looping when paused
+                button.textContent = "▶"; // Change to play icon
+            }
+        });
+    });
+</script>
+
+<section class="py-24 bg-gray-50">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="text-center mb-16">
+
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+
+<p class="text-xl text-gray-600">Comprehensive solutions tailored to your business needs</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+
+<i class="ri-code-line text-2xl text-primary"></i>
+
+</div>
+
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Digital Transformation</h3>
+
+<p class="text-gray-600">Modernize your business with cutting-edge digital solutions and strategies.</p>
+
+</div>
+
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+
+<i class="ri-cloud-line text-2xl text-primary"></i>
+
+</div>
+
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Cloud Services</h3>
+
+<p class="text-gray-600">Scalable cloud solutions for enhanced performance and security.</p>
+
+</div>
+
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+
+<div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-6">
+
+<i class="ri-robot-line text-2xl text-primary"></i>
+
+</div>
+
+<h3 class="text-2xl font-bold text-gray-900 mb-4">AI & Analytics</h3>
+
+<p class="text-gray-600">Leverage data-driven insights with advanced AI and analytics solutions.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="text-center mb-16">
+
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+
+<p class="text-xl text-gray-600">See how we've helped organizations achieve their goals</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+
+<img src="https://readdy.ai/api/search-image?query=modern corporate office meeting room with people discussing project on digital screens, professional business setting, natural lighting, contemporary interior design&width=600&height=400&seq=2&orientation=landscape&flag=e8cb288026751c7f3decbe1f1959c88e" alt="Case Study 1" class="w-full h-48 object-cover">
+
+<div class="p-6">
+
+<span class="text-sm text-primary font-medium">Financial Services</span>
+
+<h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">Digital Banking Transformation</h3>
+
+<p class="text-gray-600 mb-4">Helping a leading bank modernize their digital infrastructure and customer experience.</p>
+
+<a href="#" class="text-primary font-medium hover:text-primary/80">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+
+<img src="https://readdy.ai/api/search-image?query=manufacturing facility with robotic automation and workers monitoring digital displays, industrial setting with modern technology integration&width=600&height=400&seq=3&orientation=landscape&flag=eb1f67518962e1c9f629c04316e524a4" alt="Case Study 2" class="w-full h-48 object-cover">
+
+<div class="p-6">
+
+<span class="text-sm text-primary font-medium">Manufacturing</span>
+
+<h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">Smart Factory Implementation</h3>
+
+<p class="text-gray-600 mb-4">Implementing IoT solutions to optimize production efficiency and reduce costs.</p>
+
+<a href="#" class="text-primary font-medium hover:text-primary/80">Read More →</a>
+
+</div>
+
+</div>
+
+<div class="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+
+<img src="https://readdy.ai/api/search-image?query=healthcare professionals using digital medical records system on tablets and large displays, modern hospital setting with clean design&width=600&height=400&seq=4&orientation=landscape&flag=8ae8ba05614079e6fe60c84cc8a90297" alt="Case Study 3" class="w-full h-48 object-cover">
+
+<div class="p-6">
+
+<span class="text-sm text-primary font-medium">Healthcare</span>
+
+<h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">Healthcare Analytics Platform</h3>
+
+<p class="text-gray-600 mb-4">Building a comprehensive analytics solution for improved patient care.</p>
+
+<a href="#" class="text-primary font-medium hover:text-primary/80">Read More →</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="py-24 bg-gray-50">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="text-center mb-16">
+
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Our Impact</h2>
+
+<p class="text-xl text-gray-600">Delivering measurable results for our clients</p>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<div id="projectsChart" class="w-full h-80 bg-white rounded-lg p-6"></div>
+
+<div id="satisfactionChart" class="w-full h-80 bg-white rounded-lg p-6"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="py-24">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="grid md:grid-cols-2 gap-16 items-center">
+
+<div>
+
+<h2 class="text-4xl font-bold text-gray-900 mb-6">Let's Build Something Amazing Together</h2>
+
+<p class="text-xl text-gray-600 mb-8">Ready to start your digital transformation journey? Get in touch with our experts today.</p>
+
+<form class="space-y-6">
+
+<div>
+
+<input type="text" placeholder="Full Name" class="w-full px-4 py-3 rounded border-gray-200 focus:border-primary focus:ring-primary">
+
+</div>
+
+<div>
+
+<input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded border-gray-200 focus:border-primary focus:ring-primary">
+
+</div>
+
+<div>
+
+<textarea placeholder="Message" rows="4" class="w-full px-4 py-3 rounded border-gray-200 focus:border-primary focus:ring-primary"></textarea>
+
+</div>
+
+<button class="w-full bg-primary text-white px-6 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Send Message</button>
+
+</form>
+
+</div>
+
+<div class="relative h-[400px] rounded-lg overflow-hidden">
+
+<img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Location Map" class="absolute inset-0 w-full h-full object-cover">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="bg-gray-900 text-white py-16">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<div class="grid md:grid-cols-4 gap-8">
+
+<div>
+
+<a href="#" class="text-2xl font-['Pacifico'] text-white mb-6 block tracking-[0.2em]">INENI</a>
+
+<p class="text-gray-400">Transforming businesses through innovative technology solutions.</p>
+
+</div>
+
+<div>
+
+<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+
+<ul class="space-y-2">
+
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-lg font-semibold mb-4">Contact</h3>
+
+<ul class="space-y-2">
+
+<li class="text-gray-400">123 Innovation Street</li>
+
+<li class="text-gray-400">Tech City, TC 12345</li>
+
+<li class="text-gray-400">+1 (555) 123-4567</li>
+
+<li class="text-gray-400">info@company.com</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+
+<div class="flex space-x-4">
+
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+
+<i class="ri-linkedin-fill text-xl"></i>
+
+</a>
+
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+
+<i class="ri-twitter-fill text-xl"></i>
+
+</a>
+
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+
+<i class="ri-facebook-fill text-xl"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+
+<p>© 2025 <span class="tracking-[0.2em]">INENI</span>. All rights reserved.</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const projectsChart = echarts.init(document.getElementById('projectsChart'));
+
+const satisfactionChart = echarts.init(document.getElementById('satisfactionChart'));
+
+const projectsOption = {
+
+animation: false,
+
+title: {
+
+text: 'Successful Projects',
+
+textStyle: {
+
+color: '#1f2937'
+
+}
+
+},
+
+tooltip: {
+
+trigger: 'axis',
+
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+
+textStyle: {
+
+color: '#1f2937'
+
+}
+
+},
+
+xAxis: {
+
+type: 'category',
+
+data: ['2020', '2021', '2022', '2023', '2024'],
+
+axisLabel: {
+
+color: '#1f2937'
+
+}
+
+},
+
+yAxis: {
+
+type: 'value',
+
+axisLabel: {
+
+color: '#1f2937'
+
+}
+
+},
+
+series: [{
+
+data: [150, 230, 324, 418, 520],
+
+type: 'line',
+
+smooth: true,
+
+lineStyle: {
+
+color: 'rgba(87, 181, 231, 1)'
+
+},
+
+areaStyle: {
+
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+
+offset: 0,
+
+color: 'rgba(87, 181, 231, 0.3)'
+
+}, {
+
+offset: 1,
+
+color: 'rgba(87, 181, 231, 0.1)'
+
+}])
+
+},
+
+symbol: 'none'
+
+}],
+
+grid: {
+
+top: 60,
+
+right: 20,
+
+bottom: 20,
+
+left: 40
+
+}
+
+};
+
+const satisfactionOption = {
+
+animation: false,
+
+title: {
+
+text: 'Client Satisfaction',
+
+textStyle: {
+
+color: '#1f2937'
+
+}
+
+},
+
+tooltip: {
+
+trigger: 'item',
+
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+
+textStyle: {
+
+color: '#1f2937'
+
+}
+
+},
+
+series: [{
+
+type: 'pie',
+
+radius: ['40%', '70%'],
+
+data: [
+
+{ value: 75, name: 'Very Satisfied' },
+
+{ value: 15, name: 'Satisfied' },
+
+{ value: 8, name: 'Neutral' },
+
+{ value: 2, name: 'Unsatisfied' }
+
+],
+
+itemStyle: {
+
+borderRadius: 8
+
+},
+
+label: {
+
+color: '#1f2937'
+
+},
+
+color: [
+
+'rgba(87, 181, 231, 1)',
+
+'rgba(141, 211, 199, 1)',
+
+'rgba(251, 191, 114, 1)',
+
+'rgba(252, 141, 98, 1)'
+
+]
+
+}]
+
+};
+
+projectsChart.setOption(projectsOption);
+
+satisfactionChart.setOption(satisfactionOption);
+
+window.addEventListener('resize', () => {
+
+projectsChart.resize();
+
+satisfactionChart.resize();
+
+});
+
+</script>
+
+<script>
+
+!function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+
+posthog.init('phc_t9tkQZJiyi2ps9zUYm8TDsL6qXo4YmZx0Ot5rBlAlEd', {
+
+api_host: 'https://us.i.posthog.com',
+
+autocapture: false,
+
+capture_pageview: false,
+
+capture_pageleave: false,
+
+capture_performance: {
+
+web_vitals: false,
+
+},
+
+rageclick: false,
+
+})
+
+window.shareKey = '78ITz0CIk0bEFVlVORBHrQ';
+
+window.host = 'readdy.ai';
+
+</script>
+
+<script src="https://static.readdy.ai/static/share.js"></script></body>
+
+</html>
+
+
