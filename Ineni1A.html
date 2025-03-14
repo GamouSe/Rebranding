@@ -308,50 +308,72 @@ DEFAULT: '8px',
 < link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 < script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+
+
 <!-- Logo Carousel Section -->
 <section class="w-full bg-white py-6 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <!-- Add company logos manually in sequence -->
-                <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/logo.png" alt="Company 1" class="h-10 mx-4 transition duration-300">
-                </div>
-                <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/BNP.jpg" alt="Company 2" class="h-10 mx-4  transition duration-300">
-                </div>
-                <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-10 mx-4 transition duration-300">
-                </div>
-                <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/DXC.jpg" alt="Company 4" class="h-10 mx-4 transition duration-300">
-                </div>
-                <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-10 mx-4 transition duration-300">
-                </div>
+        <div class="logos-wrapper">
+            <div class="logos">
+                <img src="./Logos/logo.png" alt="Company 1" class="h-16 object-contain mx-4">
+                <img src="./Logos/BNP.jpg" alt="Company 2" class="h-16 object-contain mx-4">
+                <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-16 object-contain mx-4">
+                <img src="./Logos/DXC.jpg" alt="Company 4" class="h-16 object-contain mx-4">
+                <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-16 object-contain mx-4">
             </div>
         </div>
     </div>
 </section>
 
-<!-- Swiper.js Initialization -->
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: "auto",
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 2000, // Adjust speed
-            disableOnInteraction: false
-        },
-        speed: 1500, // Smooth scrolling speed
-        breakpoints: {
-            640: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 5 }
+<!-- CSS for Smooth Infinite Scrolling -->
+<style>
+    .logos-wrapper {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: scrollLeft 15s linear infinite;
+    }
+
+    .logos img {
+        height: 50px; /* Adjust height */
+        margin: 0 30px; /* Adjust spacing */
+        flex-shrink: 0;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .logos img:hover {
+        transform: scale(1.1); /* Slight zoom on hover */
+    }
+
+    @keyframes scrollLeft {
+        from {
+            transform: translateX(0);
         }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+<!-- JavaScript to Ensure Smooth Loop -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const logosContainer = document.querySelector(".logos");
+        const duplicate = logosContainer.cloneNode(true); // Duplicate logos
+        logosContainer.parentNode.appendChild(duplicate);
     });
 </script>
+
+  
 <section class="py-24 bg-gray-50">
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
