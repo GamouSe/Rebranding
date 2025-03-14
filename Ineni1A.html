@@ -313,15 +313,21 @@ DEFAULT: '8px',
 <!-- Logo Carousel Section -->
 <section class="w-full bg-white py-6 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="logos-container">
+        <div class="logos-wrapper">
             <div class="logos">
                 <img src="./Logos/logo.png" alt="Company 1" class="logo">
                 <img src="./Logos/BNP.jpg" alt="Company 2" class="logo">
                 <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="logo">
                 <img src="./Logos/DXC.jpg" alt="Company 4" class="logo">
                 <img src="./Logos/Nationwide.jpg" alt="Company 5" class="logo">
-                <!-- Duplicate logos for smooth looping -->
-
+            </div>
+            <!-- Duplicating logos for seamless infinite loop -->
+            <div class="logos">
+                <img src="./Logos/logo.png" alt="Company 1" class="logo">
+                <img src="./Logos/BNP.jpg" alt="Company 2" class="logo">
+                <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="logo">
+                <img src="./Logos/DXC.jpg" alt="Company 4" class="logo">
+                <img src="./Logos/Nationwide.jpg" alt="Company 5" class="logo">
             </div>
         </div>
     </div>
@@ -329,11 +335,9 @@ DEFAULT: '8px',
 
 <!-- CSS for Smooth Infinite Scrolling -->
 <style>
-    .logos-container {
-        width: 100%;
-        overflow: hidden;
+    .logos-wrapper {
         display: flex;
-        align-items: center;
+        overflow: hidden;
         position: relative;
         white-space: nowrap;
     }
@@ -341,19 +345,21 @@ DEFAULT: '8px',
     .logos {
         display: flex;
         align-items: center;
-        white-space: nowrap;
+        justify-content: space-between;
+        flex-shrink: 0;
+        min-width: 100%; /* Ensures proper alignment */
         animation: scrollLeft 15s linear infinite;
     }
 
     .logo {
-        height: 50px; /* Set uniform height */
-        margin: 0 30px; /* Adjust spacing */
+        height: 60px; /* Ensures uniform height */
+        margin: 0 40px; /* Adjust spacing */
         flex-shrink: 0;
         transition: transform 0.3s ease-in-out;
     }
 
     .logo:hover {
-        transform: scale(1.1); /* Slight zoom on hover */
+        transform: scale(1.1);
     }
 
     @keyframes scrollLeft {
@@ -361,17 +367,20 @@ DEFAULT: '8px',
             transform: translateX(0);
         }
         to {
-            transform: translateX(-50%);
+            transform: translateX(-100%);
         }
     }
 </style>
 
-<!-- JavaScript to Ensure Continuous Loop -->
+<!-- JavaScript to Ensure Seamless Loop -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const logosContainer = document.querySelector(".logos");
-        const duplicate = logosContainer.cloneNode(true);
-        logosContainer.parentNode.appendChild(duplicate);
+        const logosWrapper = document.querySelector(".logos-wrapper");
+        const logos = document.querySelector(".logos");
+
+        // Clone the logos to create a seamless loop effect
+        const clone = logos.cloneNode(true);
+        logosWrapper.appendChild(clone);
     });
 </script>
 
