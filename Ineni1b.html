@@ -302,6 +302,57 @@ DEFAULT: '8px',
     });
 </script>
 
+
+<!-- Swiper.js CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Logo Carousel Section -->
+<section class="w-full bg-white py-8 relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper flex items-center">
+                <!-- Company Logos -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="logo.png" alt="Company 1" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="logo.png" alt="Company 2" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="logo.png" alt="Company 3" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="logo.png" alt="Company 4" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="logo.png" alt="Company 5" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Swiper.js Initialization -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2000, // Adjust speed
+            disableOnInteraction: false
+        },
+        speed: 1500, // Smooth scrolling speed
+        breakpoints: {
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 }
+        }
+    });
+</script>
+  
+  
 <section class="py-24 bg-gray-50">
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
