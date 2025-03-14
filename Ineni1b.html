@@ -107,25 +107,25 @@ DEFAULT: '8px',
 
     <!-- Navigation Links (Centered) -->
     <div class="hidden md:flex items-center space-x-8">
-      
+
       <!-- A Propos Dropdown -->
       <div x-data="{ open: false }" class="relative">
         <button
-          @mouseenter="open = true"
-          @mouseleave="setTimeout(() => open = false, 300)"
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
           class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
         >
           A Propos <i class="ri-arrow-down-s-line ml-1"></i>
         </button>
-        <!-- Dropdown Menu -->
         <div
           x-show="open"
           x-cloak
-          @mouseenter="open = true"
-          @mouseleave="setTimeout(() => open = false, 300)"
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
           class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
         >
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Identité</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Nos Sites</a>
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Approche</a>
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Nos Valeurs</a>
         </div>
@@ -134,35 +134,33 @@ DEFAULT: '8px',
       <!-- Services Dropdown -->
       <div x-data="{ open: false }" class="relative">
         <button
-          @mouseenter="open = true"
-          @mouseleave="setTimeout(() => open = false, 300)"
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
           class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
         >
           Services <i class="ri-arrow-down-s-line ml-1"></i>
         </button>
 
-        <!-- First Level Dropdown -->
         <div
           x-show="open"
           x-cloak
-          @mouseenter="open = true"
-          @mouseleave="setTimeout(() => open = false, 300)"
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
           class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
         >
           <!-- Conseil -->
           <div x-data="{ subOpen: false }" class="relative">
             <a href="#" 
-               @mouseenter="subOpen = true"
-               @mouseleave="setTimeout(() => subOpen = false, 300)"
+               @mouseover="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 500)"
                class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
               Conseil <i class="ri-arrow-right-s-line ml-auto"></i>
             </a>
-            <!-- Submenu -->
             <div
               x-show="subOpen"
               x-cloak
-              @mouseenter="subOpen = true"
-              @mouseleave="setTimeout(() => subOpen = false, 300)"
+              @mouseover="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 500)"
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
             >
               <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Transformation Digitale</a>
@@ -173,26 +171,25 @@ DEFAULT: '8px',
           <!-- Management des Business Services -->
           <div x-data="{ subOpen: false }" class="relative">
             <a href="#" 
-               @mouseenter="subOpen = true"
-               @mouseleave="setTimeout(() => subOpen = false, 300)"
+               @mouseover="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 500)"
                class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
               Management des Business Services <i class="ri-arrow-right-s-line ml-auto"></i>
             </a>
-            <!-- Submenu -->
             <div
               x-show="subOpen"
               x-cloak
-              @mouseenter="subOpen = true"
-              @mouseleave="setTimeout(() => subOpen = false, 300)"
+              @mouseover="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 500)"
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
             >
-              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Services Management - ITSM</a>
-              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Operations Management - ITOM</a>
-              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Enterprise Services Management - ESM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ITSM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ITOM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ESM</a>
             </div>
           </div>
 
-          <!-- Other Main Services -->
+          <!-- Other Services -->
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Gestion de Projets</a>
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Développement d'Applications</a>
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Support & Formation</a>
@@ -210,7 +207,6 @@ DEFAULT: '8px',
         <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
         <i class="ri-arrow-down-s-line"></i>
       </button>
-      <!-- Dropdown Menu -->
       <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
         <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
           <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
