@@ -307,40 +307,53 @@ DEFAULT: '8px',
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-<section class="w-full bg-white py-6 overflow-hidden">
-    <div class="logo-slider">
-        <div class="logo-track">
-            <img src="./Logos/logo.png" alt="Company 1" class="logo">
-            <img src="./Logos/BNP.jpg" alt="Company 2" class="logo">
-            <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="logo">
-            <img src="./Logos/DXC.jpg" alt="Company 4" class="logo">
-            <img src="./Logos/Nationwide.jpg" alt="Company 5" class="logo">
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        loop: true,  // Enables infinite loop
+        speed: 5000, // Adjust speed (higher value = slower movement)
+        autoplay: {
+            delay: 0,  // No delay between transitions
+            disableOnInteraction: false,
+        },
+        allowTouchMove: false, // Disable manual dragging to keep smooth movement
+        breakpoints: {
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 }
+        }
+    });
+</script>
+
+<!-- Logo Carousel Section -->
+<section class="w-full bg-white py-6 mt-[-45px] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Company Logos -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/logo.png" alt="Company 1" class="h-16 object-contain mx-4">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/BNP.jpg" alt="Company 2" class="h-16 object-contain mx-4">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-16 object-contain mx-4">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/DXC.jpg" alt="Company 4" class="h-16 object-contain mx-4">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-16 object-contain mx-4">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-.logo-slider {
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-}
-.logo-track {
-    display: flex;
-    animation: scroll 15s linear infinite;
-}
-.logo {
-    height: 60px; /* Ensures all logos have the same height */
-    margin: 0 20px;
-    object-fit: contain;
-}
-@keyframes scroll {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
+
+
   
 <section class="py-24 bg-gray-50">
 
