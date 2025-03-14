@@ -314,26 +314,71 @@ DEFAULT: '8px',
             <div class="swiper-wrapper">
                 <!-- Add company logos manually in sequence -->
                 <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/logo.png" alt="Company 1" class="h-40 w-32 object-contain mx-4">
+                    <img src="./Logos/logo.png" alt="Company 1" class="h-5 w-32 object-contain mx-4">
                 </div>
                 <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/BNP.jpg" alt="Company 2" class="h-40 w-32 object-contain mx-4">
+                    <img src="./Logos/BNP.jpg" alt="Company 2" class="h-5 w-32 object-contain mx-4">
                 </div>
                 <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-40 w-32 object-contain mx-4">
+                    <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-5 w-32 object-contain mx-4">
                 </div>
                 <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/DXC.jpg" alt="Company 4" class="h-40 w-32 object-contain mx-4">
+                    <img src="./Logos/DXC.jpg" alt="Company 4" class="h-5 w-32 object-contain mx-4">
                 </div>
                 <div class="swiper-slide flex justify-center">
-                    <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-40 w-32 object-contain mx-4">
+                    <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-5 w-32 object-contain mx-4">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- CSS for Smooth Scrolling Effect -->
+<style>
+    .logos-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
 
+    .logos {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        animation: scrollLeft 10s linear infinite;
+    }
+
+    .logo {
+        height: 50px; /* Adjust the height as needed */
+        margin: 0 30px; /* Space between logos */
+        filter: grayscale(100%);
+        transition: filter 0.3s;
+    }
+
+    .logo:hover {
+        filter: grayscale(0%);
+    }
+
+    @keyframes scrollLeft {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+
+<!-- JavaScript to Clone Logos for Seamless Effect -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const logosContainer = document.querySelector(".logos");
+        const duplicate = logosContainer.cloneNode(true);
+        logosContainer.parentNode.appendChild(duplicate);
+    });
+</script>
 
   
 <section class="py-24 bg-gray-50">
