@@ -109,21 +109,21 @@ DEFAULT: '8px',
     <div class="hidden md:flex items-center space-x-8">
       
       <!-- A Propos Dropdown -->
-      <div x-data="{ openAPropos: false }" class="relative">
+      <div x-data="{ open: false }" class="relative">
         <button
-          @mouseover="openAPropos = true"
-          @mouseleave="openAPropos = false"
+          @mouseenter="open = true"
+          @mouseleave="setTimeout(() => open = false, 300)"
           class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
         >
           A Propos <i class="ri-arrow-down-s-line ml-1"></i>
         </button>
         <!-- Dropdown Menu -->
         <div
-          x-show="openAPropos"
+          x-show="open"
           x-cloak
+          @mouseenter="open = true"
+          @mouseleave="setTimeout(() => open = false, 300)"
           class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-          @mouseover="openAPropos = true"
-          @mouseleave="openAPropos = false"
         >
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Identité</a>
           <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Approche</a>
@@ -132,38 +132,38 @@ DEFAULT: '8px',
       </div>
 
       <!-- Services Dropdown -->
-      <div x-data="{ openServices: false }" class="relative">
+      <div x-data="{ open: false }" class="relative">
         <button
-          @mouseover="openServices = true"
-          @mouseleave="openServices = false"
+          @mouseenter="open = true"
+          @mouseleave="setTimeout(() => open = false, 300)"
           class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
         >
           Services <i class="ri-arrow-down-s-line ml-1"></i>
         </button>
 
-        <!-- First Level Dropdown (Main Services List) -->
+        <!-- First Level Dropdown -->
         <div
-          x-show="openServices"
+          x-show="open"
           x-cloak
+          @mouseenter="open = true"
+          @mouseleave="setTimeout(() => open = false, 300)"
           class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-          @mouseover="openServices = true"
-          @mouseleave="openServices = false"
         >
           <!-- Conseil -->
-          <div x-data="{ openConseil: false }" class="relative">
+          <div x-data="{ subOpen: false }" class="relative">
             <a href="#" 
-               @mouseover="openConseil = true"
-               @mouseleave="openConseil = false"
+               @mouseenter="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 300)"
                class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
               Conseil <i class="ri-arrow-right-s-line ml-auto"></i>
             </a>
             <!-- Submenu -->
             <div
-              x-show="openConseil"
+              x-show="subOpen"
               x-cloak
+              @mouseenter="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 300)"
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-              @mouseover="openConseil = true"
-              @mouseleave="openConseil = false"
             >
               <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Transformation Digitale</a>
               <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Consulting</a>
@@ -171,20 +171,20 @@ DEFAULT: '8px',
           </div>
 
           <!-- Management des Business Services -->
-          <div x-data="{ openManagement: false }" class="relative">
+          <div x-data="{ subOpen: false }" class="relative">
             <a href="#" 
-               @mouseover="openManagement = true"
-               @mouseleave="openManagement = false"
+               @mouseenter="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 300)"
                class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
               Management des Business Services <i class="ri-arrow-right-s-line ml-auto"></i>
             </a>
             <!-- Submenu -->
             <div
-              x-show="openManagement"
+              x-show="subOpen"
               x-cloak
+              @mouseenter="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 300)"
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-              @mouseover="openManagement = true"
-              @mouseleave="openManagement = false"
             >
               <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Services Management - ITSM</a>
               <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Operations Management - ITOM</a>
