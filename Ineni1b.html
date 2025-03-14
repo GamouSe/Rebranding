@@ -107,51 +107,85 @@ DEFAULT: '8px',
             <img src="logo.png" alt="Ineni Logo" class="h-10 w-auto">
         </a>
 
-      <!-- Navigation Links (Centered) -->
-        <div class="hidden md:flex items-center space-x-8">
-            <a href="#" class="text-black hover:text-primary transition-colors">A Propos</a>
+    <!-- Navigation Links (Centered) -->
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="#" class="text-black hover:text-primary transition-colors">A Propos</a>
 
-            <!-- Services Dropdown -->
-            <div class="relative group">
-                <button class="text-black hover:text-primary transition-colors flex items-center">
-                    Services <i class="ri-arrow-down-s-line ml-1"></i>
-                </button>
-                <div class="hidden absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg group-hover:block transition duration-300">
-                    
-                    <!-- Conseil -->
-                    <div class="relative group">
-                        <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">
-                            Conseil
-                        </a>
-                        <div class="hidden absolute left-full top-0 mt-0 w-64 bg-white rounded-lg shadow-lg group-hover:block transition duration-300">
-                            <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Transformation Digitale</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Consulting</a>
-                        </div>
-                    </div>
-
-                    <!-- Management des Business Services -->
-                    <div class="relative group">
-                        <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">
-                            Management des Business Services
-                        </a>
-                        <div class="hidden absolute left-full top-0 mt-0 w-64 bg-white rounded-lg shadow-lg group-hover:block transition duration-300">
-                            <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Services Management - ITSM</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Operations Management - ITOM</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Enterprise Services Management - ESM</a>
-                        </div>
-                    </div>
-
-                    <!-- Other Services -->
-                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Gestion de Projets</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Développement d'Applications</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Support & Formation</a>
-                </div>
+      <!-- Services Dropdown with Multi-level using Alpine.js -->
+      <div x-data="{ openServices: false }" class="relative">
+        <button
+          @mouseenter="openServices = true"
+          @mouseleave="openServices = false"
+          class="text-black hover:text-primary transition-colors flex items-center"
+        >
+          Services <i class="ri-arrow-down-s-line ml-1"></i>
+        </button>
+        
+        <!-- Main Services Dropdown -->
+        <div
+          x-show="openServices"
+          x-cloak
+          class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+          @mouseenter="openServices = true"
+          @mouseleave="openServices = false"
+        >
+          <!-- Conseil with Nested Submenu -->
+          <div x-data="{ openConseil: false }" class="relative">
+            <a
+              href="#"
+              @mouseenter="openConseil = true"
+              @mouseleave="openConseil = false"
+              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center"
+            >
+              Conseil <i class="ri-arrow-right-s-line ml-auto"></i>
+            </a>
+            <div
+              x-show="openConseil"
+              x-cloak
+              class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+              @mouseenter="openConseil = true"
+              @mouseleave="openConseil = false"
+            >
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Transformation Digitale</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Consulting</a>
             </div>
+          </div>
+          
+          <!-- Management des Business Services with Nested Submenu -->
+          <div x-data="{ openManagement: false }" class="relative">
+            <a
+              href="#"
+              @mouseenter="openManagement = true"
+              @mouseleave="openManagement = false"
+              class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center"
+            >
+              Management des Business Services <i class="ri-arrow-right-s-line ml-auto"></i>
+            </a>
+            <div
+              x-show="openManagement"
+              x-cloak
+              class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+              @mouseenter="openManagement = true"
+              @mouseleave="openManagement = false"
+            >
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Services Management - ITSM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Operations Management - ITOM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Enterprise Services Management - ESM</a>
+            </div>
+          </div>
 
-            <a href="#" class="text-black hover:text-primary transition-colors">Réalisations</a>
-            <a href="#" class="text-black hover:text-primary transition-colors">Blog</a>
-            <a href="#" class="text-black hover:text-primary transition-colors">Contact</a>
+          <!-- Other Services (Direct Links) -->
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Gestion de Projets</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Développement d'Applications</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Support & Formation</a>
         </div>
+      </div>
+
+      <a href="#" class="text-black hover:text-primary transition-colors">Réalisations</a>
+      <a href="#" class="text-black hover:text-primary transition-colors">Blog</a>
+      <a href="#" class="text-black hover:text-primary transition-colors">Contact</a>
+    </div>
+
 
         <!-- Language Menu (Far Right) -->
         <div class="relative flex items-center">
