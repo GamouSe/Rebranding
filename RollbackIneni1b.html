@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -99,40 +97,147 @@ DEFAULT: '8px',
 
 
 <!-- Navbar -->
-<nav class="fixed w-full min-h-20 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 flex items-center">
-    <div class="max-w-1xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
-        
-        <!-- Logo (Far Left) -->
-        <a href="#" class="text-2xl font-['Pacifico'] text-primary tracking-[0.2em]">INENI</a>
+<nav class="fixed w-full min-h-20 bg-white z-50 border-b border-white flex items-center">
+  <div class="max-w-1xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
+    
+    <!-- Logo (Far Left) -->
+    <a href="#">
+      <img src="./Logos/logo.png" alt="Ineni Logo" class="h-10 w-auto">
+    </a>
 
-        <!-- Navigation Links (Centered) -->
-        <div class="hidden md:flex items-center space-x-8">
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">A Propos</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Services</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition-colors">Emploi</a>
-            <a href="#" class="bg-primary text-white px-6 py-2 rounded-button hover:bg-primary/90 transition">Contact</a>
+    <!-- Navigation Links (Centered) -->
+    <div class="hidden md:flex items-center space-x-8">
+
+      <!-- A Propos Dropdown -->
+      <div x-data="{ open: false }" class="relative">
+        <button
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
+          class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
+        >
+          A Propos <i class="ri-arrow-down-s-line ml-1"></i>
+        </button>
+        <div
+          x-show="open"
+          x-cloak
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
+          class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+        >
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Identité</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Nos Sites</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Notre Approche</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Nos Valeurs</a>
         </div>
+      </div>
 
-        <!-- Language Menu (Far Right) -->
-        <div class="relative flex items-center">
-            <button id="languageBtn" class="flex items-center space-x-1 text-gray-700 hover:text-primary transition-colors">
-                <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
-                <i class="ri-arrow-down-s-line"></i>
-            </button>
+      <!-- Services Dropdown -->
+      <div x-data="{ open: false }" class="relative">
+        <button
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
+          class="text-black hover:text-[#6A0DAD] transition-colors flex items-center"
+        >
+          Services <i class="ri-arrow-down-s-line ml-1"></i>
+        </button>
 
-            <!-- Dropdown Menu -->
-            <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
-                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                     <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
-                 </a>
-                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                     <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
-                 </a>
+        <div
+          x-show="open"
+          x-cloak
+          @mouseover="open = true"
+          @mouseleave="setTimeout(() => open = false, 500)"
+          class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+        >
+          <!-- Conseil -->
+          <div x-data="{ subOpen: false }" class="relative">
+            <a href="#" 
+               @mouseover="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 500)"
+               class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
+              Conseil <i class="ri-arrow-right-s-line ml-auto"></i>
+            </a>
+            <div
+              x-show="subOpen"
+              x-cloak
+              @mouseover="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 500)"
+              class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+            >
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Transformation Digitale</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">IT Consulting</a>
             </div>
+          </div>
+
+          <!-- Management des Business Services -->
+          <div x-data="{ subOpen: false }" class="relative">
+            <a href="#" 
+               @mouseover="subOpen = true"
+               @mouseleave="setTimeout(() => subOpen = false, 500)"
+               class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
+              Management des Business Services <i class="ri-arrow-right-s-line ml-auto"></i>
+            </a>
+            <div
+              x-show="subOpen"
+              x-cloak
+              @mouseover="subOpen = true"
+              @mouseleave="setTimeout(() => subOpen = false, 500)"
+              class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+            >
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ITSM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ITOM</a>
+              <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">ESM</a>
+            </div>
+          </div>
+
+          <!-- Other Services -->
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Gestion de Projets</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Développement d'Applications</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors">Support & Formation</a>
         </div>
+      </div>
+
+      <a href="#" class="text-black hover:text-[#6A0DAD] transition-colors">Réalisations</a>
+      <a href="#" class="text-black hover:text-[#6A0DAD] transition-colors">Blog</a>
+      <a href="#" class="text-black hover:text-[#6A0DAD] transition-colors">Contact</a>
     </div>
+
+    <!-- Language Menu (Far Right) -->
+    <div class="relative flex items-center">
+      <button id="languageBtn" class="flex items-center space-x-1 text-black hover:text-[#6A0DAD] transition-colors">
+        <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
+        <i class="ri-arrow-down-s-line"></i>
+      </button>
+      <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
+        <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
+          <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
+        </a>
+        <a href="#" class="block px-4 py-2 text-sm text-black hover:text-[#6A0DAD] transition-colors flex items-center">
+          <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
+        </a>
+      </div>
+    </div>
+  </div>
 </nav>
+
+<!-- Alpine.js for Dropdown Functionality -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.2/cdn.min.js"></script>
+
+<!-- JavaScript for Language Dropdown -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const languageBtn = document.getElementById("languageBtn");
+        const languageMenu = document.getElementById("languageMenu");
+
+        languageBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            languageMenu.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", function() {
+            languageMenu.classList.add("hidden");
+        });
+    });
+</script>
 
 
 
@@ -162,7 +267,7 @@ DEFAULT: '8px',
         </p>
 
         <!-- Action Buttons -->
-        <div class="flex justify-end gap-4 mt-6">
+        <div class="flex justify-end gap-4 mt-2">
             <a href="#" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">Découvrez notre approche</a>
             <a href="#" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition">Rejoignez nos équipes</a>
         </div>
@@ -174,7 +279,7 @@ DEFAULT: '8px',
     </button>
 
     <!-- White Bottom Section -->
-    <div class="absolute bottom-0 w-full h-36 bg-white"></div>
+    <div class="absolute bottom-0 w-full h-16 bg-white"></div>
 </section>
 
 <!-- JavaScript for Play/Pause Button -->
@@ -197,6 +302,55 @@ DEFAULT: '8px',
     });
 </script>
 
+
+<!-- Swiper.js CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Logo Carousel Section -->
+<section class="w-full bg-white py-6 mt-[-45px] relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Add company logos manually in sequence -->
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/logo.png" alt="Company 1" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/BNP.jpg" alt="Company 2" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/DXC.jpg" alt="Company 4" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+                <div class="swiper-slide flex justify-center">
+                    <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-16 mx-4 grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Swiper.js Initialization -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2000, // Adjust speed
+            disableOnInteraction: false
+        },
+        speed: 1500, // Smooth scrolling speed
+        breakpoints: {
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 }
+        }
+    });
+</script>
 <section class="py-24 bg-gray-50">
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
