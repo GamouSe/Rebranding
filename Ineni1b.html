@@ -99,43 +99,83 @@ DEFAULT: '8px',
 
 
 <!-- Navbar -->
-<nav class="fixed w-full min-h-20 bg-white/90 backdrop-blur-md z-50 border-b border-white flex items-center">
+<nav class="fixed w-full min-h-20 bg-white z-50 border-b border-white flex items-center">
     <div class="max-w-1xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
         
         <!-- Logo (Far Left) -->
-        <!-- Logo (Far Left, Now an Image) -->
         <a href="#">
             <img src="logo.png" alt="Ineni Logo" class="h-10 w-auto">
         </a>
 
         <!-- Navigation Links (Centered) -->
         <div class="hidden md:flex items-center space-x-8">
-            <a href="#" class="text-black-700 hover:text-primary transition-colors">A Propos</a>
-            <a href="#" class="text-black-700 hover:text-primary transition-colors">Services</a>
-            <a href="#" class="text-black-700 hover:text-primary transition-colors">Réalisations</a>
-            <a href="#" class="text-black-700 hover:text-primary transition-colors">Blog</a>
-            <a href="#" class="text-black-700 hover:text-primary transition-colors">Contact</a>
+            <a href="#" class="text-black hover:text-primary transition-colors">A Propos</a>
+
+            <!-- Dropdown for Services -->
+            <div class="relative group">
+                <button class="text-black hover:text-primary transition-colors flex items-center">
+                    Services <i class="ri-arrow-down-s-line ml-1"></i>
+                </button>
+                <div class="hidden absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg group-hover:block transition duration-300">
+                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                        🧠 Digital Transformation & IT Consulting
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                        🔧 ITSM/ESM/ITOM Integration (ServiceNow, BMC Remedy)
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                        📊 Project Management & Delivery
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                        📱 Web & Mobile App Development
+                    </a>
+                    <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                        🎓 IT & Business Performance Training
+                    </a>
+                </div>
+            </div>
+
+            <a href="#" class="text-black hover:text-primary transition-colors">Réalisations</a>
+            <a href="#" class="text-black hover:text-primary transition-colors">Blog</a>
+            <a href="#" class="text-black hover:text-primary transition-colors">Contact</a>
         </div>
 
         <!-- Language Menu (Far Right) -->
         <div class="relative flex items-center">
-            <button id="languageBtn" class="flex items-center space-x-1 text-gray-700 hover:text-primary transition-colors">
+            <button id="languageBtn" class="flex items-center space-x-1 text-black hover:text-primary transition-colors">
                 <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
                 <i class="ri-arrow-down-s-line"></i>
             </button>
 
             <!-- Dropdown Menu -->
             <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
-                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                     <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
-                 </a>
-                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-                     <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
-                 </a>
+                <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                    <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
+                </a>
+                <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+                    <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
+                </a>
             </div>
         </div>
     </div>
 </nav>
+
+<!-- JavaScript for Language Dropdown -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const languageBtn = document.getElementById("languageBtn");
+        const languageMenu = document.getElementById("languageMenu");
+
+        languageBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            languageMenu.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", function() {
+            languageMenu.classList.add("hidden");
+        });
+    });
+</script>
 
 
 
