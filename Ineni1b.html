@@ -100,21 +100,43 @@ DEFAULT: '8px',
 
 <!-- Navbar -->
 <nav class="fixed w-full min-h-20 bg-white z-50 border-b border-white flex items-center">
-    <div class="max-w-1xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
-        
-        <!-- Logo (Far Left) -->
-        <a href="#">
-            <img src="logo.png" alt="Ineni Logo" class="h-10 w-auto">
-        </a>
+  <div class="max-w-1xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full">
+    
+    <!-- Logo (Far Left) -->
+    <a href="#">
+      <img src="logo.png" alt="Ineni Logo" class="h-10 w-auto">
+    </a>
 
-<!-- Navigation Links (Centered) -->
+    <!-- Navigation Links (Centered) -->
     <div class="hidden md:flex items-center space-x-8">
-      <a href="#" class="text-black hover:text-primary transition-colors">A Propos</a>
+      
+      <!-- A Propos Dropdown -->
+      <div x-data="{ openAPropos: false }" class="relative">
+        <button
+          @mouseover="openAPropos = true"
+          @mouseleave="openAPropos = false"
+          class="text-black hover:text-primary transition-colors flex items-center"
+        >
+          A Propos <i class="ri-arrow-down-s-line ml-1"></i>
+        </button>
+        <!-- Dropdown Menu -->
+        <div
+          x-show="openAPropos"
+          x-cloak
+          class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
+          @mouseover="openAPropos = true"
+          @mouseleave="openAPropos = false"
+        >
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Notre Identité</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Notre Approche</a>
+          <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Nos Valeurs</a>
+        </div>
+      </div>
 
       <!-- Services Dropdown -->
       <div x-data="{ openServices: false }" class="relative">
         <button
-          @mouseenter="openServices = true"
+          @mouseover="openServices = true"
           @mouseleave="openServices = false"
           class="text-black hover:text-primary transition-colors flex items-center"
         >
@@ -126,13 +148,13 @@ DEFAULT: '8px',
           x-show="openServices"
           x-cloak
           class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-          @mouseenter="openServices = true"
+          @mouseover="openServices = true"
           @mouseleave="openServices = false"
         >
           <!-- Conseil -->
           <div x-data="{ openConseil: false }" class="relative">
             <a href="#" 
-               @mouseenter="openConseil = true"
+               @mouseover="openConseil = true"
                @mouseleave="openConseil = false"
                class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
               Conseil <i class="ri-arrow-right-s-line ml-auto"></i>
@@ -142,7 +164,7 @@ DEFAULT: '8px',
               x-show="openConseil"
               x-cloak
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-              @mouseenter="openConseil = true"
+              @mouseover="openConseil = true"
               @mouseleave="openConseil = false"
             >
               <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">Transformation Digitale</a>
@@ -153,7 +175,7 @@ DEFAULT: '8px',
           <!-- Management des Business Services -->
           <div x-data="{ openManagement: false }" class="relative">
             <a href="#" 
-               @mouseenter="openManagement = true"
+               @mouseover="openManagement = true"
                @mouseleave="openManagement = false"
                class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
               Management des Business Services <i class="ri-arrow-right-s-line ml-auto"></i>
@@ -163,7 +185,7 @@ DEFAULT: '8px',
               x-show="openManagement"
               x-cloak
               class="absolute left-full top-0 w-64 bg-white rounded-lg shadow-lg transition duration-300"
-              @mouseenter="openManagement = true"
+              @mouseover="openManagement = true"
               @mouseleave="openManagement = false"
             >
               <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">IT Services Management - ITSM</a>
@@ -184,25 +206,23 @@ DEFAULT: '8px',
       <a href="#" class="text-black hover:text-primary transition-colors">Contact</a>
     </div>
 
-
-        <!-- Language Menu (Far Right) -->
-        <div class="relative flex items-center">
-            <button id="languageBtn" class="flex items-center space-x-1 text-black hover:text-primary transition-colors">
-                <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
-                <i class="ri-arrow-down-s-line"></i>
-            </button>
-
-            <!-- Dropdown Menu -->
-            <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
-                <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
-                    <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
-                </a>
-                <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
-                    <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
-                </a>
-            </div>
-        </div>
+    <!-- Language Menu (Far Right) -->
+    <div class="relative flex items-center">
+      <button id="languageBtn" class="flex items-center space-x-1 text-black hover:text-primary transition-colors">
+        <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 object-cover" alt="English">
+        <i class="ri-arrow-down-s-line"></i>
+      </button>
+      <!-- Dropdown Menu -->
+      <div id="languageMenu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-lg overflow-hidden z-50">
+        <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+          <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-4 mr-2 object-cover" alt="English"> English
+        </a>
+        <a href="#" class="block px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center">
+          <img src="https://flagcdn.com/w20/fr.png" class="w-5 h-4 mr-2 object-cover" alt="Français"> Français
+        </a>
+      </div>
     </div>
+  </div>
 </nav>
 
 <!-- Alpine.js for Dropdown Functionality -->
