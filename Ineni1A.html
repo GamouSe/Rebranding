@@ -313,13 +313,19 @@ DEFAULT: '8px',
 <!-- Logo Carousel Section -->
 <section class="w-full bg-white py-6 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="logos-wrapper">
+        <div class="logos-container">
             <div class="logos">
-                <img src="./Logos/logo.png" alt="Company 1" class="h-16 object-contain mx-4">
-                <img src="./Logos/BNP.jpg" alt="Company 2" class="h-16 object-contain mx-4">
-                <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="h-16 object-contain mx-4">
-                <img src="./Logos/DXC.jpg" alt="Company 4" class="h-16 object-contain mx-4">
-                <img src="./Logos/Nationwide.jpg" alt="Company 5" class="h-16 object-contain mx-4">
+                <img src="./Logos/logo.png" alt="Company 1" class="logo">
+                <img src="./Logos/BNP.jpg" alt="Company 2" class="logo">
+                <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="logo">
+                <img src="./Logos/DXC.jpg" alt="Company 4" class="logo">
+                <img src="./Logos/Nationwide.jpg" alt="Company 5" class="logo">
+                <!-- Duplicate logos for smooth looping -->
+                <img src="./Logos/logo.png" alt="Company 1" class="logo">
+                <img src="./Logos/BNP.jpg" alt="Company 2" class="logo">
+                <img src="./Logos/DassaultSystems.jpg" alt="Company 3" class="logo">
+                <img src="./Logos/DXC.jpg" alt="Company 4" class="logo">
+                <img src="./Logos/Nationwide.jpg" alt="Company 5" class="logo">
             </div>
         </div>
     </div>
@@ -327,7 +333,7 @@ DEFAULT: '8px',
 
 <!-- CSS for Smooth Infinite Scrolling -->
 <style>
-    .logos-wrapper {
+    .logos-container {
         width: 100%;
         overflow: hidden;
         display: flex;
@@ -343,14 +349,14 @@ DEFAULT: '8px',
         animation: scrollLeft 15s linear infinite;
     }
 
-    .logos img {
-        height: 50px; /* Adjust height */
+    .logo {
+        height: 50px; /* Set uniform height */
         margin: 0 30px; /* Adjust spacing */
         flex-shrink: 0;
         transition: transform 0.3s ease-in-out;
     }
 
-    .logos img:hover {
+    .logo:hover {
         transform: scale(1.1); /* Slight zoom on hover */
     }
 
@@ -359,16 +365,16 @@ DEFAULT: '8px',
             transform: translateX(0);
         }
         to {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
 </style>
 
-<!-- JavaScript to Ensure Smooth Loop -->
+<!-- JavaScript to Ensure Continuous Loop -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const logosContainer = document.querySelector(".logos");
-        const duplicate = logosContainer.cloneNode(true); // Duplicate logos
+        const duplicate = logosContainer.cloneNode(true);
         logosContainer.parentNode.appendChild(duplicate);
     });
 </script>
